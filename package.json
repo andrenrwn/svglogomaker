@@ -1,0 +1,21 @@
+{
+  "name": "svglogomaker",
+  "version": "1.0",
+  "description": "An SVG Logo Maker",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "latest",
+    "sharp": "latest",
+    "terminal-image": "latest",
+    "shapes": "file:lib"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "type": "module"
+}
