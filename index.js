@@ -3,7 +3,8 @@ import { promises as fs } from 'fs';
 import sharp from 'sharp';
 import terminalImage from 'terminal-image';
 import { Logo, Circle, Square, Triangle, Polygon, Text } from './lib/shapes.mjs';
-import { validateHTMLColor } from './lib/validatecolor.mjs';
+import { validateHTMLColor, validateHTMLColorName, validateHTMLColorHex, HTMLColors } from './lib/validatecolor.mjs';
+import chalk from 'chalk';
 
 const mylogo = new Logo;
 
@@ -64,16 +65,23 @@ let choices = [
         value: "setcolor",
         description: "Add color to the last shape",
     },
-    new Separator(), // uncommon sections
+    new Separator(),
     {
         name: "remove",
         value: "remove",
         description: "Remove the last shape",
     },
+    new Separator(),
     {
         name: "render",
-        value: "quit",
+        value: "render",
         description: "Finish and render logo",
+    },
+    new Separator(),
+    {
+        name: "quit",
+        value: "quit",
+        description: "Cancel and quit program",
     },
 ];
 
@@ -83,15 +91,34 @@ let logo_textcolor;
 let logocomponents = []; // array of objects
 
 function displaycomponents() {
-    for (let i = 0; i < logocomponents.length; i++) {
-        console.log("shape: ", logocomponents[i].name, "color: ", logocomponents[i].fill);
-    };
+    console.log(chalk.yellow.bgBlue("─".repeat((process.stdout.columns || 10) - 1)) + "\n");
+    console.log("Logo components: ");
+    if (logocomponents.length > 0) {
+        for (let i = 0; i < logocomponents.length; i++) {
+            let color = logocomponents[i].fill;
+            let hexcolor;
+            if (validateHTMLColorName(color)) {
+                hexcolor = HTMLColors[color.toLowerCase()];
+            } else if (validateHTMLColorHex(color)) {
+                hexcolor = color.toUpperCase();
+            } else {
+                hexcolor = "#000000";
+            };
+            let componentname = logocomponents[i].name;
+            if (logocomponents[i].name === 'text') {
+                componentname += ': ' + logocomponents[i].text;
+            };
+            console.log("shape: ", componentname, "color: ", chalk.hex(hexcolor)(logocomponents[i].fill), chalk.bgHex(hexcolor)(logocomponents[i].fill));
+        };
+    } else {
+        console.log(chalk.red("<empty>"));
+    }
+    console.log(chalk.yellow.bgBlue("─".repeat((process.stdout.columns || 10) - 1)) + "\n");
 };
 
 // a while loop menu for user to select options to add to the logo
 let answer;
 do {
-    console.log("Logo components: ");
     displaycomponents();
     answer = await select({
         message: "Select a shape to add:\n",
@@ -116,16 +143,16 @@ do {
             logocomponents.push(new Square);
             break;
         case "pentagon":
-            logocomponents.push(new Polygon({ side: 5 }));
+            logocomponents.push(new Polygon({ sides: 5 }));
             break;
         case "hexagon":
-            logocomponents.push(new Polygon({ side: 6 }));
+            logocomponents.push(new Polygon({ sides: 6 }));
             break;
         case "septagon":
-            logocomponents.push(new Polygon({ side: 7 }));
+            logocomponents.push(new Polygon({ sides: 7 }));
             break;
         case "octagon":
-            logocomponents.push(new Polygon({ side: 8 }));
+            logocomponents.push(new Polygon({ sides: 8 }));
             break;
         case "polygon":
             let polygonsides = await input({
@@ -139,7 +166,7 @@ do {
                     };
                 }
             });
-            logocomponents.push(new Polygon({ side: polygonsides }));
+            logocomponents.push(new Polygon({ sides: polygonsides }));
             break;
         case "setcolor":
             if (logocomponents.length > 0) {
@@ -150,9 +177,12 @@ do {
         case "remove":
             logocomponents.pop();
             break;
+        case "quit":
+            process.exit();
+            break;
         default:
     }
-} while (answer !== "quit");
+} while (answer !== "render");
 
 // render mylogo 
 for (let i = 0; i < logocomponents.length; i++) {

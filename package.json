@@ -10,9 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "@inquirer/prompts": "latest",
+    "chalk": "latest",
+    "shapes": "file:lib",
     "sharp": "latest",
-    "terminal-image": "latest",
-    "shapes": "file:lib"
+    "terminal-image": "^1.0.0"
   },
   "devDependencies": {
     "jest": "^29.7.0"
