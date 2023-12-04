@@ -12,11 +12,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@inquirer/prompts": "latest",
-    "chalk": "latest",
-    "shapes": "file:lib",
-    "sharp": "latest",
-    "terminal-image": "^1.0.0"
+    "@inquirer/prompts": "~3.3.0",
+    "chalk": "~5.3.0",
+    "sharp": "~0.33.0",
+    "terminal-image": "^2.0.0",
+    "shapes": "file:lib"
   },
   "devDependencies": {
     "jest": "^29.7.0"

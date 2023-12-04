@@ -12,14 +12,17 @@ This nodejs command line utility lets users create an SVG logo by layering simpl
 
 ## Installation
 
+- nodeJS (if not yet installed)
 - clone this repository
+  $ git clone https://github.com/andrenrwn/svglogomaker.git
 - npm install
-- node index.js
 
 ## Usage
 
-Run the utility by executing
-$ node index.js
+Run the utility by executing the bash script:
+$ ./start_svglogomaker.sh
+
+(The bash script adds the NODE options required to run jest tests with import, see: Testing)
 
 You will be presented with the following selection menu:
 
@@ -109,7 +112,10 @@ terminal-image - shows a .png image on supported terminals
 
 ## Testing
 
-This utility uses jest for testing components of the shapes.mjs module.
+Run the following bash script to start unit testing with jest:
+./start_test.sh
+
+SVG Logo Maker uses jest for testing components of the shapes.mjs module.
 Jest may not be supported natively and you may get errors like this:
 
 `SyntaxError: Cannot use import statement outside a module`
