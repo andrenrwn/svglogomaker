@@ -133,3 +133,16 @@ See: [https://stackoverflow.com/questions/74289336/jest-node-js-syntaxerror-cann
 ## Questions
 
 Feel free to post any questions in this repository's issues tab.
+
+## Examples and Links
+
+Walkthrough Video
+[https://github.com/andrenrwn/svglogomaker/blob/main/vid/guide.mp4](https://github.com/andrenrwn/svglogomaker/blob/main/vid/guide.mp4)  (11MB)
+[(Local link)](vid/guide.mp4)
+
+Example Logo 1
+![Example Logo 1](img/examplelogo1.png)
+
+Example Logo 2
+![Example Logo 2](img/examplelogo2.png)
+
