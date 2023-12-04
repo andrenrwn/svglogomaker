@@ -107,9 +107,22 @@ chalk - text colors
 sharp - image utility to render an .SVG markup into a .png image
 terminal-image - shows a .png image on supported terminals
 
-## Tests
+## Testing
 
 This utility uses jest for testing components of the shapes.mjs module.
+Jest may not be supported natively and you may get errors like this:
+
+`SyntaxError: Cannot use import statement outside a module`
+
+`      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1505:14)``
+
+In order to let jest use imports, allow node to run in experimental mode by setting these environment variables in your terminal:
+
+`$ NODE_OPTIONS="--experimental-vm-modules npx jest"`
+
+`$ export NODE_OPTIONS`
+
+See: [https://stackoverflow.com/questions/74289336/jest-node-js-syntaxerror-cannot-use-import-statement-outside-a-module](https://stackoverflow.com/questions/74289336/jest-node-js-syntaxerror-cannot-use-import-statement-outside-a-module)
 
 ## Questions
 

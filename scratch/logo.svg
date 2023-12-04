@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
+<circle cx="150" cy="100" r="80" stroke="Navy" fill="Navy" stroke-width="5 "/>
+<polygon points="150, 15 196, 28 227, 65 234, 112 214, 156 174, 182 126, 182 86, 156 66, 112 73, 65 104, 28 " stroke="DarkBlue" fill="DarkBlue" stroke-width="5 "/>
+<polygon points="150, 15 224, 143 76, 143" stroke="#03A7DD" fill="#03A7DD" stroke-width="5 "/>
+<text text-anchor="middle" dominant-baseline="middle" x="150" y="100" font-family="sans-serif" font-weight="bold" font-size="80px" stroke="black" fill="white" stroke-width="2 ">^o^</text>
+</svg>
